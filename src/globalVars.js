@@ -2,7 +2,9 @@
 
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define([], factory(idbModules));
+        define([], function () {
+            return factory(idbModules);
+        });
     } else if (typeof module === 'object' && module.exports) {
         module.exports = factory(idbModules);
     } else {
