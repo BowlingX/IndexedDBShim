@@ -1,3 +1,2 @@
-        return window.shimIndexedDB;
-    };
+  return window.shimIndexedDB;
 }));

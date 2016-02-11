@@ -83,5 +83,9 @@
         } catch (e) {}
     }
 
+    window.idbModules = idbModules;
+
+    return window.shimIndexedDB;
+
 }(window, idbModules));
 

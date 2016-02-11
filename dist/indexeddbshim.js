@@ -1,17 +1,3 @@
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], function () {
-            return factory(idbModules);
-        });
-    } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory(idbModules);
-    } else {
-        factory(idbModules)(root);
-    }
-}(this, function (idbModules) {
-    'use strict';
-    return function (window) {
-
 var idbModules = {  // jshint ignore:line
     util: {
         cleanInterface: false
@@ -34,6 +20,18 @@ var idbModules = {  // jshint ignore:line
         }
     }
 })();
+
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([], function () {
+            return factory(idbModules, root);
+        });
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory(idbModules, root);
+    } else {
+        factory(idbModules, root);
+    }
+}(this, function (idbModules, window) {
 
 (function(idbModules) {
     'use strict';
@@ -3350,9 +3348,12 @@ var idbModules = {  // jshint ignore:line
         } catch (e) {}
     }
 
+    window.idbModules = idbModules;
+
+    return window.shimIndexedDB;
+
 }(window, idbModules));
 
 
-        return window.shimIndexedDB;
-    };
+  return window.shimIndexedDB;
 }));

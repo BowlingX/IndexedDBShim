@@ -3,9 +3,26 @@
 "use strict";
 
 module.exports = function(grunt) {
-	var srcFiles = ['src/Init.js', 'src/util.js', 'src/polyfill.js', 'src/Sca.js', 'src/Key.js', 'src/Event.js', 'src/DOMException.js', 'src/IDBRequest.js', 'src/IDBKeyRange.js', 'src/IDBCursor.js', 'src/IDBIndex.js', 'src/IDBObjectStore.js', 'src/IDBTransaction.js', 'src/IDBDatabase.js', 'src/IDBFactory.js', 'src/globalVars.js'];
+	var srcFiles = [
+        'src/Init.js',
+        'src/util.js',
+        'src/polyfill.js',
+        'src/Sca.js',
+        'src/Key.js',
+        'src/Event.js',
+        'src/DOMException.js',
+        'src/IDBRequest.js',
+        'src/IDBKeyRange.js',
+        'src/IDBCursor.js',
+        'src/IDBIndex.js',
+        'src/IDBObjectStore.js',
+        'src/IDBTransaction.js',
+        'src/IDBDatabase.js',
+        'src/IDBFactory.js',
+        'src/globalVars.js'
+    ];
 	var concatSrcFiles = srcFiles.slice(0);
-    concatSrcFiles.unshift('src/umdStart.js');
+    concatSrcFiles.splice(1, 0, 'src/umdStart.js');
     concatSrcFiles.push('src/umdEnd.js');
     var saucekey = null;
 	if (typeof process.env.saucekey !== "undefined") {
